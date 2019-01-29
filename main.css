@@ -1,0 +1,54 @@
+h1{
+text-align: center;
+margin-top: 0px;
+padding-top:0px; 
+font-size: 70px
+}
+body{
+background-color: rgb(252, 220, 225);
+}
+
+.label1{
+  background-color: pink;}
+
+td {
+    height: 150px;
+    width: 150px;
+    border-radius: 10px;
+    background-color: rgb(255, 231, 235);
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+table{
+    text-align: center;
+    font-size: 40px;
+  }
+
+div {
+        margin-top:20px; 
+        margin-left: 50px;
+    }
+.grid-container{
+        display: grid;
+        grid-template-columns: 60% 40%;
+
+    }
+.scores
+{
+    margin-top:200px; 
+    font-size: 40px;
+   }
+#div1{
+text-align: center;
+   }
+
+
+ button{
+  border: none;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 4px 2px;
+  width: 200px;
+   }
