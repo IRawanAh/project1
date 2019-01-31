@@ -1,3 +1,4 @@
+
 var winningIndex = [[0, 1, 2], [0, 3, 6], [0, 4, 8], [1, 4, 7], [2, 5, 8], [3, 4, 5], [6, 7, 8], [2, 4, 6]];
 var gameType;
 gameType ="two-players";
@@ -8,103 +9,66 @@ $("#x-score").text(score["X"]);
 $("#o-score").text(score["O"]);
 $("#tie").text(score["Tie"]);
 $("#two-players").css("background-color","gray");
-$("#easy").on("click",easyclicked);
-$("#hard").on("click",hardclicked);
-$("#intermediate").on("click",intermediateclicked);
-$("#two-players").on("click",twoplayersclicked);
+$(".mode-button").on("click",modeclicked);
 
-function easyclicked(){
-    if (gameType=="two-players"){
-        reset_score();
-    }
-    gameType="easy";
-    play=true;
-    $("td").text("");
-    $("button").css("background-color","white"); 
-    $("#easy").css("background-color","gray"); 
+function modeclicked(event)
+{
+$("button").css("background-color","white"); 
+$(event.target).css("background-color","gray");
+gameType=$(event.target).attr("id");
+console.log(gameType);
+play=true;
+$("td").text("");
+reset_score();
 }
-function hardclicked(){
-    if (gameType=="two-players"){
-        reset_score();
-    }
-    gameType="hard";
-    play=true;
-    $("td").text("");
-    $("button").css("background-color","white"); 
-    $("#hard").css("background-color","gray"); 
-}
-function intermediateclicked(){
-    if (gameType=="two-players"){
-        reset_score();
-    }
-    gameType="intermediate";
-    play=true;
-    $("td").text("");
-    $("button").css("background-color","white"); 
-    $("#intermediate").css("background-color","gray"); 
-}
-function twoplayersclicked(){
-    if (!gameType=="two-players"){
-      reset_score();
-    }
-    gameType="two-players";
-    play=true;
-    $("td").text("");
-    $("button").css("background-color","white"); 
-    $("#two-players").css("background-color","gray"); 
-}
-function reset_score(){
-    score["X"]=0;
-    score["O"]=0;
-    score["Tie"]=0;
+
+function reset_score()
+{
+score["X"]=0;
+score["O"]=0;
+score["Tie"]=0;
 $("#x-score").text(score["X"]);
 $("#o-score").text(score["O"]);
 $("#tie").text(score["Tie"]);
-
 }
 
 
-$("td").click(function () {
-    //winner();
-    if(play===true){
-    if($(event.target).text()==""){
-    if(gameType=="two-players"){
-    var tdId=jQuery(this).attr("id");
-    if($(event.target).text()=="" ){
-    $("#"+tdId).text(player);}
-    if(player=="X"){
-    player="O";}
-else{
+$("td").click(function() 
+{
+    if(play===true)
+    {
+    if($(event.target).text()=="")
+    {
+    if(gameType=="two-players")
+    {
+    if($(event.target).text()=="" )
+    {
+    $(event.target).text(player);
+     }
+    if(player=="X")
+    {
+    player="O";
+    }
+    else{
     player="X"
-}
-}
-winner();
-if(gameType=="easy"){
+    }}
+
+    winner();
+    if(gameType=="easy"){
     $(event.target).text("X");
     winner();  
     random();
     winner();
    }
 
-
-if(gameType=="hard" || gameType=="intermediate"){
+    if(gameType=="hard" || gameType=="intermediate"){
     $(event.target).text("X");
     winner();
     computerwins();
     winner();
-   }
-   
-}}
-//winner();
-}
-);
-
-
-
-
+      }}}});
 
 function random(){
-console.log("random");
 var index=[];
 index[0]=$("#one");
 index[1]=$("#two");
@@ -116,18 +80,15 @@ index[6]=$("#seven");
 index[7]=$("#eight");
 index[8]=$("#nine");
 var randomArray=[];
-for (var i=0; i<index.length;i++){
+for (var i=0; i<index.length;i++)
+{
     if( index[i].text()=="")
 {
        randomArray.push(index[i]);
 }}
-
 randomArray[Math.floor(Math.random()*randomArray.length)].text("O");
 winner();
 }
-
-
-
 
 $(".playAgain").click(function () {
     play=true;
@@ -155,8 +116,7 @@ if(index1==index2 && index2==index3){
             score[index1]++;
             play=false; 
             alert("The winner is: "+index1);
-}}
-}
+}}}
 
 if (!index.includes("") && play==true ){
     score["Tie"]++;
@@ -167,92 +127,6 @@ $("#x-score").text(score["X"]);
 $("#o-score").text(score["O"]);
 $("#tie").text(score["Tie"]);
 }
-
-
-
-// function winner2(){
-//     var index=[];
-// index[0]=$("#one").text();
-// index[1]=$("#two").text();
-// index[2]=$("#three").text();
-// index[3]=$("#four").text();
-// index[4]=$("#five").text();
-// index[5]=$("#six").text();
-// index[6]=$("#seven").text();
-// index[7]=$("#eight").text();
-// index[8]=$("#nine").text();
-
-// if(index[0]==index[1] && index[1]==index[2]){
-//     if(index[0]!="" && play==true){
-//         score[index[0]]++;
-//         play=false; 
-//         alert("The winner is: "+index[0]);
-     
-// }
-// }
-//  else
-// if(index[0]==index[4] && index[4]==index[8]){
-//     if(index[0]!="" && play==true){
-//         score[index[0]]++;
-//         play=false; 
-//        alert("The winner is: "+index[0]);
-        
-//     }
-// }
-// else
-// if(index[2]==index[4] && index[4]==index[6]){
-//     if(index[2]!="" && play==true ){
-//         score[index[2]]++;
-//         play=false; 
-//         alert("The winner is: "+index[2]);}
-// }
-//  else
-// if(index[2]==index[5] && index[5]==index[8]){
-//     if(index[2]!="" && play==true){
-//         score[index[2]]++;
-//         play=false; 
-//         alert("The winner is: "+index[2]);}  
-// }
-// else
-// if(index[1]==index[4] && index[4]==index[7]){
-//     if(index[1]!="" && play==true){
-//         score[index[1]]++;
-//         play=false; 
-//         alert("The winner is: "+index[1]);}
-// }
-// else
-// if(index[0]==index[3] && index[3]==index[6]){
-//     if(index[0]!="" && play==true){
-//         score[index[0]]++;
-//         play=false; 
-//        alert("The winner is: "+index[0]);}
-// }
-// else
-// if(index[3]==index[4] && index[4]==index[5]){
-//     if(index[3]!="" && play==true){
-//         score[index[3]]++;
-//         play=false; 
-//         alert("The winner is: "+index[3]);}
-// }
-// else if(index[6]==index[7] && index[7]==index[8]){
-//     if(index[6]!="" && play==true){
-//         score[index[6]]++;
-//         play=false; 
-//         alert("The winner is: "+index[6]);}}
-//         else
-//      if (!index.includes("")){
-//     score["Tie"]++;
-//     alert("Tie");
-// }
-// $("#x-score").text(score["X"]);
-// $("#o-score").text(score["O"]);
-// $("#tie").text(score["Tie"]);
-
-// }
-
-
-
-
 
 
 function computerwins() {
@@ -267,13 +141,13 @@ function computerwins() {
     index[7] = $("#eight");
     index[8] = $("#nine");
 
-
     if (index[4].text() === "") {
         index[4].text("O");
         // I think this position is the best
-    }else
-    if(index[5].text()=="X" && index[7].text()=="X" && index[8].text()=="" && gameType=="hard"){
-
+    }
+    else
+    if(index[5].text()=="X" && index[7].text()=="X" && index[8].text()=="" && gameType=="hard")
+    {
         index[8].text("O");
         return;
 /*
@@ -284,10 +158,10 @@ __|X |X
 this condition will check if the x has two possibilities
 
     */  
+
      }
-
-
-     else {
+     else 
+     {
         var tempArr = [];
         var tempArr2 = [];
 
@@ -298,24 +172,26 @@ this condition will check if the x has two possibilities
             tempArr2[0] = index[winningIndex[i][0]].text();
             tempArr2[1] = index[winningIndex[i][1]].text();
             tempArr2[2] = index[winningIndex[i][2]].text();
-            
+            if(index[8].text()=="X" && index[4].text()=="X" && index[2].text()=="" && gameType=="hard")
+            {
+                index[2].text("O");
+                return; 
+            } 
 if (!tempArr2.includes("X") && tempArr2.includes(""))
-  
     {
 var countO=0;
 for(var j=0;j<tempArr2.length;j++)
-    if(tempArr2[j]=="O"){
-         //this condition will check if there is two O  and will win if there is  
+    if(tempArr2[j]=="O")
+    {
+         //this condition will check if there is two O  and  will win if there is  
         countO++;
-if(countO==2){
+if(countO==2)
+    {
     console.log("I am winning");
     var ind = tempArr2.indexOf("");
     tempArr[ind].text("O");
     return;
-    }
-    }
-}
-}}
+    }}}}}
 
 
 for (var i = 0; i < winningIndex.length; i++) {
@@ -326,7 +202,7 @@ for (var i = 0; i < winningIndex.length; i++) {
     tempArr2[1] = index[winningIndex[i][1]].text();
     tempArr2[2] = index[winningIndex[i][2]].text();
 if (tempArr2.includes("X") && tempArr2.includes("") && !tempArr2.includes("O")){
-        //this condition will check if there is two X and doesn't let the X win 
+        //this condition will check if there is two X 
     {var countX=0;
     for(var j=0;j<tempArr2.length;j++)
 if(tempArr2[j]=="X"){
@@ -336,10 +212,8 @@ if(countX==2){
  console.log("do not let the X win");
 tempArr[ind].text("O");
 return;
-}
-}
-}
- }}
+}}}}}
+
  for (var i = 0; i < winningIndex.length; i++) {
     tempArr[0] = index[winningIndex[i][0]];
     tempArr[1] = index[winningIndex[i][1]];
@@ -354,7 +228,6 @@ return;
                 var ind = tempArr2.indexOf("");
                 tempArr[ind].text("O");
                 return;
-            }
-        }
+            }}
         random();
     }
