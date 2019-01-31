@@ -145,21 +145,7 @@ function computerwins() {
         index[4].text("O");
         // I think this position is the best
     }
-    else
-    if(index[5].text()=="X" && index[7].text()=="X" && index[8].text()=="" && gameType=="hard")
-    {
-        index[8].text("O");
-        return;
-/*
-__|__|__
-__|__|X
-__|X |X
-
-this condition will check if the x has two possibilities
-
-    */  
-
-     }
+   
      else 
      {
         var tempArr = [];
@@ -172,28 +158,8 @@ this condition will check if the x has two possibilities
             tempArr2[0] = index[winningIndex[i][0]].text();
             tempArr2[1] = index[winningIndex[i][1]].text();
             tempArr2[2] = index[winningIndex[i][2]].text();
-            if(index[2].text()=="X" && index[6].text()=="X" && index[5].text()=="" && gameType=="hard")
-            {
-                index[5].text("O");
-                return; 
-            } 
-            if(index[8].text()=="X" && index[4].text()=="X" && index[2].text()=="" && gameType=="hard")
-            {
-                index[2].text("O");
-                return; 
-            } 
-            
-            if(index[2].text()=="X" && index[7].text()=="X" && index[5].text()=="" && gameType=="hard")
-            {
-                index[5].text("O");
-                return; 
-            } 
-            if(index[0].text()=="X" && index[7].text()=="X" && index[3].text()=="" && gameType=="hard")
-            {
-                index[3].text("O");
-                return; 
-            } 
-if (!tempArr2.includes("X") && tempArr2.includes(""))
+
+            if (!tempArr2.includes("X") && tempArr2.includes(""))
     {
 var countO=0;
 for(var j=0;j<tempArr2.length;j++)
@@ -207,7 +173,8 @@ if(countO==2)
     var ind = tempArr2.indexOf("");
     tempArr[ind].text("O");
     return;
-    }}}}}
+    }}}
+}
 
 
 for (var i = 0; i < winningIndex.length; i++) {
@@ -217,18 +184,71 @@ for (var i = 0; i < winningIndex.length; i++) {
     tempArr2[0] = index[winningIndex[i][0]].text();
     tempArr2[1] = index[winningIndex[i][1]].text();
     tempArr2[2] = index[winningIndex[i][2]].text();
-if (tempArr2.includes("X") && tempArr2.includes("") && !tempArr2.includes("O")){
+if (tempArr2.includes("X") && tempArr2.includes("") && !tempArr2.includes("O"))
+{
         //this condition will check if there is two X 
-    {var countX=0;
-    for(var j=0;j<tempArr2.length;j++)
-if(tempArr2[j]=="X"){
+var countX=0;
+for(var j=0;j<tempArr2.length;j++)
+if(tempArr2[j]=="X")
+{
 countX++;
 if(countX==2){              
  var ind = tempArr2.indexOf("");
  console.log("do not let the X win");
 tempArr[ind].text("O");
 return;
-}}}}}
+}}}}
+
+for (var i = 0; i < winningIndex.length; i++) {
+    tempArr[0] = index[winningIndex[i][0]];
+    tempArr[1] = index[winningIndex[i][1]];
+    tempArr[2] = index[winningIndex[i][2]];
+    tempArr2[0] = index[winningIndex[i][0]].text();
+    tempArr2[1] = index[winningIndex[i][1]].text();
+    tempArr2[2] = index[winningIndex[i][2]].text();
+if(index[2].text()=="X" && index[6].text()=="X" && index[5].text()=="" && gameType=="hard")
+{ console.log("d");
+    index[5].text("O");
+    return; 
+} 
+if(index[5].text()=="X" && index[7].text()=="X" && index[8].text()=="" && gameType=="hard")
+{
+    index[8].text("O");
+    return;
+/*
+__|__|__
+__|__|X
+__|X |X
+
+this condition will check if the x has two possibilities
+
+*/  
+
+ }
+if(index[8].text()=="X" && index[4].text()=="X" && index[2].text()=="" && gameType=="hard")
+{console.log("d2");
+    index[2].text("O");
+    return; 
+} 
+
+if(index[2].text()=="X" && index[7].text()=="X" && index[5].text()=="" && gameType=="hard")
+{console.log("d3");
+    index[5].text("O");
+    return; 
+} 
+if(index[0].text()=="X" && index[7].text()=="X" && index[3].text()=="" && gameType=="hard")
+{
+    console.log("d4");
+   index[3].text("O");
+    return; 
+} 
+if(index[6].text()=="X" && index[5].text()=="X" && index[8].text()=="" && gameType=="hard")
+{
+    console.log("d5");
+    index[8].text("O");
+    return; 
+} }
+}
 
  for (var i = 0; i < winningIndex.length; i++) {
     tempArr[0] = index[winningIndex[i][0]];
