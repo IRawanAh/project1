@@ -182,6 +182,17 @@ this condition will check if the x has two possibilities
                 index[2].text("O");
                 return; 
             } 
+            
+            if(index[2].text()=="X" && index[7].text()=="X" && index[5].text()=="" && gameType=="hard")
+            {
+                index[5].text("O");
+                return; 
+            } 
+            if(index[0].text()=="X" && index[7].text()=="X" && index[3].text()=="" && gameType=="hard")
+            {
+                index[3].text("O");
+                return; 
+            } 
 if (!tempArr2.includes("X") && tempArr2.includes(""))
     {
 var countO=0;
