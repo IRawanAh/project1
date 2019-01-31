@@ -172,6 +172,11 @@ this condition will check if the x has two possibilities
             tempArr2[0] = index[winningIndex[i][0]].text();
             tempArr2[1] = index[winningIndex[i][1]].text();
             tempArr2[2] = index[winningIndex[i][2]].text();
+            if(index[2].text()=="X" && index[6].text()=="X" && index[5].text()=="" && gameType=="hard")
+            {
+                index[5].text("O");
+                return; 
+            } 
             if(index[8].text()=="X" && index[4].text()=="X" && index[2].text()=="" && gameType=="hard")
             {
                 index[2].text("O");
