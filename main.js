@@ -79,13 +79,7 @@ index[5]=$("#six");
 index[6]=$("#seven");
 index[7]=$("#eight");
 index[8]=$("#nine");
-var randomArray=[];
-for (var i=0; i<index.length;i++)
-{
-    if( index[i].text()=="")
-{
-       randomArray.push(index[i]);
-}}
+var randomArray=index.filter(ind => ind.text()=="");
 randomArray[Math.floor(Math.random()*randomArray.length)].text("O");
 winner();
 }
